@@ -1,14 +1,21 @@
 import { submitUrl } from "@/lib/constants"
-import { responsesSchema } from "@/lib/schema-zod"
+import { responseApiSchema, responsesSchema } from "@/lib/schema-zod"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { ShareTwitter } from "./shareTwitter"
+import { Status, StatusLogo } from "./status-logo"
 import { Button } from "./ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form"
 import { Input } from "./ui/input"
 
 export const ResponsesForm = ({ nbQuestions }: { nbQuestions: number }) => {
+  const [status, setStatus] = useState<Status[]>(Array(nbQuestions).fill("None"))
+  const [explications, setExplications] = useState<string[]>(Array(nbQuestions).fill(""))
+  const isStatusCompleted = status.every((status) => status !== "None")
+
   const form = useForm<z.infer<typeof responsesSchema>>({
     resolver: zodResolver(responsesSchema),
   })
@@ -28,7 +35,19 @@ export const ResponsesForm = ({ nbQuestions }: { nbQuestions: number }) => {
     })
 
     if (apiResponse.ok) {
-      console.log("ok")
+      const apiResponseJson = await apiResponse.json()
+      const parsedApiResponse = responseApiSchema.parse(apiResponseJson)
+
+      const apiStatus = parsedApiResponse.results.map((result) => {
+        if (result === true) {
+          return "success"
+        } else {
+          return "fail"
+        }
+      })
+
+      setStatus([...apiStatus])
+      setExplications([...parsedApiResponse.explications])
     }
   }
 
@@ -42,21 +61,27 @@ export const ResponsesForm = ({ nbQuestions }: { nbQuestions: number }) => {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
             {Array.from({ length: nbQuestions }, (_, index) => (
-              <FormField
-                control={form.control}
-                name={`response${index + 1}`}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{`Réponse ${index + 1}`}</FormLabel>
-                    <FormControl>
-                      <Input placeholder={`Réponse à la question ${index + 1}`} {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              <>
+                <FormField
+                  control={form.control}
+                  name={`response${index + 1}`}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{`Réponse ${index + 1}`}</FormLabel>
+                      <div className="flex items-center gap-5">
+                        <FormControl>
+                          <Input placeholder={`Réponse à la question ${index + 1}`} {...field} />
+                        </FormControl>
+                        <StatusLogo status={status[index]} />
+                      </div>
+                      <FormMessage />
+                      {explications[index] !== "" && <div>{explications[index]}</div>}
+                    </FormItem>
+                  )}
+                />
+              </>
             ))}
-            <Button type="submit">Envoyer les réponses</Button>
+            {isStatusCompleted ? <ShareTwitter /> : <Button type="submit">Envoyer les réponses</Button>}
           </form>
         </Form>
       </CardContent>

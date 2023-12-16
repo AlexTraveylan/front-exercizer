@@ -32,3 +32,11 @@ export const responsesSchema = z
       .refine((str) => str === undefined || !isNaN(parseFloat(str)), { message: "Doit être un nombre" }),
   })
   .strict()
+
+export const responseApiSchema = z.object({
+  answers: z.array(z.number()),
+  explications: z.array(z.string()),
+  results: z.array(z.boolean()),
+})
+
+export type Responses = z.infer<typeof responsesSchema>
