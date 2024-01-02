@@ -1,4 +1,5 @@
 import { submitUrl } from "@/lib/constants"
+import { fetchWithToken, stockToken } from "@/lib/jwt-token"
 import { responseApiSchema, responsesSchema } from "@/lib/schema-zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"
@@ -14,6 +15,7 @@ import { Input } from "./ui/input"
 export const ResponsesForm = ({ nbQuestions }: { nbQuestions: number }) => {
   const [status, setStatus] = useState<Status[]>(Array(nbQuestions).fill("None"))
   const [explications, setExplications] = useState<string[]>(Array(nbQuestions).fill(""))
+  const [finalTime, setFinalTime] = useState<string>("")
   const isStatusCompleted = status.every((status) => status !== "None")
 
   const form = useForm<z.infer<typeof responsesSchema>>({
@@ -26,7 +28,7 @@ export const ResponsesForm = ({ nbQuestions }: { nbQuestions: number }) => {
       responsesToArray.push(parseFloat(responses[`response${i}`]))
     }
 
-    const apiResponse = await fetch(submitUrl, {
+    const apiResponse = await fetchWithToken(submitUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,6 +50,8 @@ export const ResponsesForm = ({ nbQuestions }: { nbQuestions: number }) => {
 
       setStatus([...apiStatus])
       setExplications([...parsedApiResponse.explications])
+      stockToken(parsedApiResponse.token)
+      setFinalTime(parsedApiResponse.final_time)
     }
   }
 
@@ -81,7 +85,7 @@ export const ResponsesForm = ({ nbQuestions }: { nbQuestions: number }) => {
                 />
               </>
             ))}
-            {isStatusCompleted ? <ShareTwitter /> : <Button type="submit">Envoyer les réponses</Button>}
+            {isStatusCompleted ? <ShareTwitter status={status} finalTime={finalTime} /> : <Button type="submit">Envoyer les réponses</Button>}
           </form>
         </Form>
       </CardContent>

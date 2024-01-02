@@ -4,9 +4,11 @@ import { Header } from "./components/header"
 
 export const Layout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col gap-5 items-center justify-center min-h-screen">
       <Header />
-      <main className="flex-grow flex items-center justify-center">{children}</main>
+      <main className="flex-grow flex items-center justify-center">
+        <div className="flex flex-col gap-3">{children}</div>
+      </main>
       <Footer />
     </div>
   )
