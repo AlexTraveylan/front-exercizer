@@ -28,10 +28,10 @@ export const ReviensDemain = () => {
   if (!combo) return <>{"Erreur dans la récupération du combo"}</>
 
   return (
-    <div className="flex flex-col gap-3 items-center">
+    <div className="flex flex-col gap-3 items-center px-3">
       <h1 className="text-2xl">{formatedWithFirstLetterUppercase}</h1>
       <h1>{`Score de combo actuel : ${combo}`}</h1>
-      <h1>{"Reviens chaque jour pour améliorer ton score de combo !"}</h1>
+      <h1 className="text-center">{"Reviens chaque jour pour améliorer ton score de combo !"}</h1>
     </div>
   )
 }
