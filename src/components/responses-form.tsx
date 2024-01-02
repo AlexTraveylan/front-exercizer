@@ -25,6 +25,7 @@ export const ResponsesForm = ({ nbQuestions }: { nbQuestions: number }) => {
   const onSubmit = async (responses: z.infer<typeof responsesSchema>) => {
     const responsesToArray: number[] = []
     for (let i = 1; i <= nbQuestions; i++) {
+      // @ts-ignore
       responsesToArray.push(parseFloat(responses[`response${i}`]))
     }
 
@@ -68,6 +69,7 @@ export const ResponsesForm = ({ nbQuestions }: { nbQuestions: number }) => {
               <>
                 <FormField
                   control={form.control}
+                  // @ts-ignore
                   name={`response${index + 1}`}
                   render={({ field }) => (
                     <FormItem>
