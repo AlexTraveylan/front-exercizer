@@ -10,7 +10,8 @@ export const FirstVersion = () => {
     const response = await fetch(firstVersionUrl)
     if (response.ok) {
       const data = await response.json()
-      const parsedData = enonceSchema.parse(data)
+
+      const parsedData = enonceSchema.parse({ ...data, token: "" })
       setFirstVersion(parsedData)
     }
   }

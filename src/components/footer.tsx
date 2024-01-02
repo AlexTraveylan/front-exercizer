@@ -8,9 +8,12 @@ export const Footer = () => {
         <NavBar />
       </div>
 
-      <a href="https://github.com/AlexTraveylan" className="font-semibold" target="_blank">
-        {"Créer par Alex Traveylan"}
-      </a>
+      <div className="flex flex-col gap-3">
+        <a href="https://github.com/AlexTraveylan" className="font-semibold" target="_blank">
+          {"Créer par Alex Traveylan"}
+        </a>
+        <h1>Version 1.0.0</h1>
+      </div>
     </div>
   )
 }
