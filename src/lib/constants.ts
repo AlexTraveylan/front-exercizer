@@ -1,4 +1,4 @@
-export const apiUrl = "http://127.0.0.1:5000"
+export const apiUrl = "https://alextraveylan.pythonanywhere.com"
 export const questionsUrl = `${apiUrl}/question`
 export const submitUrl = `${apiUrl}/submit`
 export const emailUrl = `${apiUrl}/send_email`
