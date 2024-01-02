@@ -60,7 +60,7 @@ export const ResponsesForm = ({ nbQuestions }: { nbQuestions: number }) => {
     <Card className="max-w-3xl w-screen min-w-[350px]">
       <CardHeader>
         <CardTitle>Réponses</CardTitle>
-        <CardDescription>Réponses aux questions</CardDescription>
+        <CardDescription>{"La réponse est forcement un entier ou un nombre décimal unique sans explication"}</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
