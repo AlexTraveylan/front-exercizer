@@ -27,8 +27,8 @@ export const FirstVersion = () => {
   return (
     <Card className="max-w-3xl w-screen min-w-[350px]">
       <CardHeader>
-        <CardTitle>{"Premiere version"}</CardTitle>
-        <CardDescription>{"Une premiere version est générée avec mon prompt initial"}</CardDescription>
+        <CardTitle>{"Première version"}</CardTitle>
+        <CardDescription>{"Une première version est générée avec mon prompt initial"}</CardDescription>
       </CardHeader>
       <CardContent className="flex gap-3 flex-col">
         <h1>{firstVersion.enonce}</h1>

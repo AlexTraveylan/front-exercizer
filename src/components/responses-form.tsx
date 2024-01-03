@@ -12,7 +12,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form"
 import { Input } from "./ui/input"
 
-export const ResponsesForm = ({ nbQuestions }: { nbQuestions: number }) => {
+export const ResponsesForm = ({
+  nbQuestions,
+  setIsRunning,
+}: {
+  nbQuestions: number
+  setIsRunning: React.Dispatch<React.SetStateAction<boolean>>
+}) => {
   const [status, setStatus] = useState<Status[]>(Array(nbQuestions).fill("None"))
   const [explications, setExplications] = useState<string[]>(Array(nbQuestions).fill(""))
   const [finalTime, setFinalTime] = useState<string>("")
@@ -53,6 +59,7 @@ export const ResponsesForm = ({ nbQuestions }: { nbQuestions: number }) => {
       setExplications([...parsedApiResponse.explications])
       stockToken(parsedApiResponse.token)
       setFinalTime(parsedApiResponse.final_time)
+      setIsRunning(false)
     }
   }
 

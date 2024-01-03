@@ -46,7 +46,11 @@ export const ShareTwitter = (props: TwitterShareProps) => {
   const statusFormated = generateString(props.status)
 
   return (
-    <TwitterShareButton url={"https://math-quotidien.vercel.app/"} title={`${props.finalTime} | ${statusFormated} | x${combo}`}>
+    <TwitterShareButton
+      url={"https://math-quotidien.vercel.app/"}
+      title={`${props.finalTime} | ${statusFormated} | x${combo}`}
+      hashtags={["MathQuotidien"]}
+    >
       <Button className="bg-blue-600 px-8 py-6 dark:bg-blue-900 hover:bg-blue-700 hover:dark:bg-blue-800">
         <Twitter size={32} className="dark:text-slate-200" />
         <span className="ml-2 dark:text-slate-200">Partager sur Twitter</span>

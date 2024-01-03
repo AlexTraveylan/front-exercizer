@@ -18,13 +18,13 @@ export const Fonctionnement = () => {
           </h2>
           <h2 className="indent-5">
             {
-              "Ce prompt le force à le donner sous un format que je peux facilement utilisé pour récupérer enoncé, questions, réponses et explications"
+              "Ce prompt le force à le donner sous un format que je peux facilement utiliser pour récupérer enoncé, questions, réponses et explications"
             }
           </h2>
           <h2 className="indent-5">
             {"Je demande ensuite à chatGPT de prendre un rôle d'élève et de critiquer l'exercice initial. Je récupère ensuite sa reflexion."}
           </h2>
-          <h2 className="indent-5">{"Je demande à chatGPT de prendre un rôle de professeur et se corriger et recupéré un exercice parfait !"}</h2>
+          <h2 className="indent-5">{"Je demande à chatGPT de prendre un rôle de professeur et se corriger et recupérer un exercice parfait !"}</h2>
         </CardContent>
         <CardFooter>{"Soutien moi en partageant chaque jour tes résultats sur les réseaux sociaux !"}</CardFooter>
       </Card>

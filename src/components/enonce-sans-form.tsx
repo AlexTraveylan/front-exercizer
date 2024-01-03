@@ -30,7 +30,7 @@ export const EnonceQuestionsSansForm = () => {
         <Card className="max-w-3xl w-screen min-w-[350px]">
           <CardHeader>
             <CardTitle>{"Résultat final !"}</CardTitle>
-            <CardDescription>{"Et voila enfin le résultat obtenu de la reflexion"}</CardDescription>
+            <CardDescription>{"Et voila enfin le résultat obtenu de la réflexion"}</CardDescription>
           </CardHeader>
           <CardContent className="flex gap-3 flex-col">
             <h1>{data.enonce}</h1>

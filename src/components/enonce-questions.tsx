@@ -9,6 +9,7 @@ import { ReviensDemain } from "./reviens-demain"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
 
 export const EnonceQuestions = () => {
+  const [isRunning, setIsRunning] = useState<boolean>(true)
   const [data, setData] = useState<Enonce | null>(null)
   const [check, setCheck] = useState<boolean>(false)
 
@@ -52,7 +53,7 @@ export const EnonceQuestions = () => {
   if (data && data.questions.length > 0) {
     return (
       <div className="flex flex-col gap-3">
-        <AfficherTimer />
+        {isRunning && <AfficherTimer />}
         <Card className="max-w-3xl w-screen min-w-[350px]">
           <CardHeader>
             <CardTitle>Problème du jour</CardTitle>
@@ -69,7 +70,7 @@ export const EnonceQuestions = () => {
           </CardContent>
         </Card>
 
-        <ResponsesForm nbQuestions={data.questions.length} />
+        <ResponsesForm nbQuestions={data.questions.length} setIsRunning={setIsRunning} />
       </div>
     )
   }
