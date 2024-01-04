@@ -32,7 +32,8 @@ export const ResponsesForm = ({
     const responsesToArray: number[] = []
     for (let i = 1; i <= nbQuestions; i++) {
       // @ts-ignore
-      responsesToArray.push(parseFloat(responses[`response${i}`]))
+      const reponse = String(responses[`response${i}`]).replace(",", ".")
+      responsesToArray.push(parseFloat(reponse))
     }
 
     const apiResponse = await fetchWithToken(submitUrl, {
