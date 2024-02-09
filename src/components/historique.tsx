@@ -1,7 +1,7 @@
 import { historyUrl } from "@/lib/constants"
 import { History } from "@/lib/schema-zod"
 import { useEffect, useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 
 export const Historique = () => {
   const [exercices, setData] = useState<History | null>(null)
