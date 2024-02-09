@@ -20,6 +20,11 @@ export const NavBar = () => {
             Fonctionnement
           </Link>
         </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link className={navigationMenuTriggerStyle()} to="/historique">
+            Historique
+          </Link>
+        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   )

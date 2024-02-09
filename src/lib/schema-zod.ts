@@ -67,3 +67,16 @@ export const comboSchema = z.object({
 })
 
 export type Combo = z.infer<typeof comboSchema>
+
+export const historyQuestionSchema = z.object({
+  enonce: z.string(),
+  questions: z.array(z.string()),
+  responses: z.array(z.string()),
+  explanations: z.array(z.string()),
+})
+
+export type HistoryQuestion = z.infer<typeof historyQuestionSchema>
+
+export const historySchema = z.array(historyQuestionSchema)
+
+export type History = z.infer<typeof historySchema>

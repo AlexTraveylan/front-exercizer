@@ -56,7 +56,7 @@ export const EnonceQuestions = () => {
         {isRunning && <AfficherTimer />}
         <Card className="max-w-3xl w-screen min-w-[350px]">
           <CardHeader>
-            <CardTitle>Problème du jour</CardTitle>
+            <CardTitle>{"Problème du jour (J'ai arreté la generation d'exercices, pas assez de visites)"}</CardTitle>
             <CardDescription>{formatedDate(new Date().toDateString())}</CardDescription>
           </CardHeader>
           <CardContent className="flex gap-3 flex-col">

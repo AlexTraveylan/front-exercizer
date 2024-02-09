@@ -8,3 +8,4 @@ export const reflexionUrl = `${apiUrl}/reflexion`
 export const nbPropositionsUrl = `${apiUrl}/get_nb_propositions`
 export const checkUrl = `${apiUrl}/check`
 export const comboUrl = `${apiUrl}/get_combo`
+export const historyUrl = `${apiUrl}/get_history`
