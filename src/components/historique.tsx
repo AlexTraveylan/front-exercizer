@@ -13,6 +13,7 @@ export const Historique = () => {
       try {
         const data = await response.json()
         const parsedData = historySchema.parse(data)
+        console.log(parsedData)
         setData(parsedData)
       } catch (error) {
         console.error(error)

@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { Button } from "./ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card"
 
 import { HistoryQuestion } from "@/lib/schema-zod"
@@ -30,7 +29,9 @@ export const HistoryCard = (props: HistoryCardProps) => {
           ))}
         </CardContent>
         <CardFooter>
-          <Button onClick={() => setIsCorrectionVisible(true)}>Cacher la correction</Button>
+          <div className="text-sm cursor-pointer text-slate-500 hover:text-slate-400" onClick={() => setIsCorrectionVisible(true)}>
+            Voir la correction
+          </div>
         </CardFooter>
       </Card>
     )
@@ -41,7 +42,7 @@ export const HistoryCard = (props: HistoryCardProps) => {
           <CardTitle>Correction de l'exercice n°{exo_index + 1}</CardTitle>
         </CardHeader>
         <CardContent className="flex gap-3 flex-col">
-          {exercice.responses.map((response, index) => (
+          {exercice.reponses.map((response, index) => (
             <div key={`response_${index}`}>
               <h2 className="font-semibold">Réponse n°{index + 1} :</h2>
               <h2>{response}</h2>
@@ -55,7 +56,9 @@ export const HistoryCard = (props: HistoryCardProps) => {
           ))}
         </CardContent>
         <CardFooter>
-          <Button onClick={() => setIsCorrectionVisible(false)}>Voir la correction</Button>
+          <div className="text-sm cursor-pointer text-slate-500 hover:text-slate-400" onClick={() => setIsCorrectionVisible(false)}>
+            Cacher la correction
+          </div>
         </CardFooter>
       </Card>
     )

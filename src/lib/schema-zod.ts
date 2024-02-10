@@ -71,7 +71,7 @@ export type Combo = z.infer<typeof comboSchema>
 export const historyQuestionSchema = z.object({
   enonce: z.string(),
   questions: z.array(z.string()),
-  responses: z.array(z.string()),
+  reponses: z.array(z.string()),
   explications: z.array(z.string()),
 })
 
