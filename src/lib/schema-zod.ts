@@ -72,7 +72,7 @@ export const historyQuestionSchema = z.object({
   enonce: z.string(),
   questions: z.array(z.string()),
   responses: z.array(z.string()),
-  explanations: z.array(z.string()),
+  explications: z.array(z.string()),
 })
 
 export type HistoryQuestion = z.infer<typeof historyQuestionSchema>

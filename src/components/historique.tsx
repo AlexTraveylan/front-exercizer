@@ -1,7 +1,7 @@
 import { historyUrl } from "@/lib/constants"
-import { History } from "@/lib/schema-zod"
+import { History, historySchema } from "@/lib/schema-zod"
 import { useEffect, useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import { HistoryCard } from "./history-card"
 
 export const Historique = () => {
   const [exercices, setData] = useState<History | null>(null)
@@ -12,7 +12,8 @@ export const Historique = () => {
     if (response.ok) {
       try {
         const data = await response.json()
-        setData(data)
+        const parsedData = historySchema.parse(data)
+        setData(parsedData)
       } catch (error) {
         console.error(error)
       }
@@ -30,20 +31,7 @@ export const Historique = () => {
   return (
     <>
       {exercices.map((exercice, exo_index) => (
-        <Card key={`exo_${exo_index}`} className="max-w-3xl w-screen min-w-[350px]">
-          <CardHeader>
-            <CardTitle>Exercice n°{exo_index + 1}</CardTitle>
-          </CardHeader>
-          <CardContent className="flex gap-3 flex-col">
-            <h1>{exercice.enonce}</h1>
-            {exercice.questions.map((question, index) => (
-              <div key={`question_${index}`}>
-                <h2 className="font-semibold">Question n°{index + 1} :</h2>
-                <h2>{question}</h2>
-              </div>
-            ))}
-          </CardContent>
-        </Card>
+        <HistoryCard key={`exo_${exo_index}`} exercice={exercice} index={exo_index} />
       ))}
     </>
   )
