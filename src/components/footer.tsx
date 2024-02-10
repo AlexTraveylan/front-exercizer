@@ -10,7 +10,7 @@ export const Footer = () => {
 
       <div className="flex flex-col gap-3">
         <a href="https://github.com/AlexTraveylan" className="font-semibold" target="_blank">
-          {"Créer par Alex Traveylan"}
+          {"Création de Alex Traveylan"}
         </a>
         <h1>Version 1.0.0</h1>
       </div>
