@@ -3,7 +3,7 @@ import { NavigationMenu, NavigationMenuItem, NavigationMenuList, navigationMenuT
 
 export const NavBar = () => {
   return (
-    <NavigationMenu>
+    <NavigationMenu className="flex-wrap">
       <NavigationMenuList>
         <NavigationMenuItem>
           <Link className={navigationMenuTriggerStyle()} to="/">
